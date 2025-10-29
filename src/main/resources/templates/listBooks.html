@@ -24,6 +24,10 @@
         .book-option:hover {
             background-color: #f5f5f5;
         }
+        a{
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +55,12 @@
                 Title: <span th:text="${book.getTitle()}"></span>
                 Genre: <span th:text="${book.getGenre()}"></span>
                 Rating: <span th:text="${book.getAverageRating()}"></span>
+                <a th:href="@{/pastReservations(bookTitle=${book.title})}">
+                    <button type="button">Reservations</button>
+                </a>
+
+
+
             </label>
 
         </div>

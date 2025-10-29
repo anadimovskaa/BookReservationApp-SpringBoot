@@ -1,9 +1,13 @@
 package mk.ukim.finki.wp.lab.service.impl;
 
+import mk.ukim.finki.wp.lab.bootstrap.DataHolder;
 import mk.ukim.finki.wp.lab.model.BookReservation;
 import mk.ukim.finki.wp.lab.repository.BookReservationRepository;
 import mk.ukim.finki.wp.lab.service.BookReservationService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookReservationServiceImpl implements BookReservationService {
@@ -19,4 +23,13 @@ public class BookReservationServiceImpl implements BookReservationService {
        BookReservation reservation = new BookReservation(bookTitle,readerName,readerAddress,(long)numberOfCopies);
        return this.bookReservationRepository.save(reservation);
     }
+
+    @Override
+    public List<BookReservation> findByBookTitle(String bookTitle) {
+        return DataHolder.reservations.stream()
+                .filter(r -> r.getBookTitle().equals(bookTitle))
+                .toList();
+    }
+
+
 }
