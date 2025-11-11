@@ -1,24 +1,32 @@
 package mk.ukim.finki.wp.lab.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
+@Getter
+@Setter
 public class Book {
     private String title;
     private String genre;
     private double averageRating;
+    private Long id;
+    private Author author;
 
-    // Default constructor (needed by Spring / JPA / frameworks sometimes)
+
     public Book() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     // Constructor with all fields
-    public Book(String title, String genre, double averageRating) {
+    public Book(String title, String genre, double averageRating,Author author) {
         this.title = title;
         this.genre = genre;
         this.averageRating = averageRating;
+        this.id= (long) (Math.random()*1000);
+        this.author=author;
     }
 
     // Getters & Setters
@@ -44,5 +52,13 @@ public class Book {
 
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Author getAuthor() {
+        return author;
     }
 }
