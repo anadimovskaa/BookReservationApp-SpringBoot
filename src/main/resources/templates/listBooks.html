@@ -46,6 +46,7 @@
                         <span class="text-muted ms-2">
                             (Genre: <span th:text="${book.getGenre()}"></span>,
                             Rating: <span th:text="${book.getAverageRating()}"></span>)
+                            Likes: <span th:text="${book.getLikes()}"></span>
                         </span>
                     </div>
 
@@ -67,6 +68,10 @@
                         <form th:action="@{'/books/add-book/{id}' (id=${book.getId()})}"
                               th:method="POST">
                             <button type="submit" class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                        </form>
+
+                        <form th:action="@{'/books/like/' + ${book.id}}" method="post">
+                            <button type="submit">Like <3</button>
                         </form>
 
                     </div>

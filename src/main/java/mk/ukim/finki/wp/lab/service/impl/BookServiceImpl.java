@@ -51,7 +51,7 @@ public class BookServiceImpl implements BookService {
 
        Author author = authorService.findById(authorId);
 
-        Book book = new Book (title, genre, averageRating,author);
+        Book book = new Book (title, genre, averageRating,author,0);
     return bookRepository.save(book);
     }
 
@@ -70,6 +70,14 @@ public class BookServiceImpl implements BookService {
         book.setAuthor(author);
 
         return bookRepository.save(book);
+    }
+
+    @Override
+    public void likeBook(Long id) {
+        Book book = findById(id);
+        if(book != null){
+            book.incrementLikes();
+        }
     }
 
 }

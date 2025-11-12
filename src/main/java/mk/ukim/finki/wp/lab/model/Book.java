@@ -11,6 +11,7 @@ public class Book {
     private double averageRating;
     private Long id;
     private Author author;
+    private int likes;
 
 
     public Book() {
@@ -21,12 +22,13 @@ public class Book {
     }
 
     // Constructor with all fields
-    public Book(String title, String genre, double averageRating,Author author) {
+    public Book(String title, String genre, double averageRating,Author author ,int likes) {
         this.title = title;
         this.genre = genre;
         this.averageRating = averageRating;
         this.id= (long) (Math.random()*1000);
         this.author=author;
+        this.likes=0;
     }
 
     // Getters & Setters
@@ -60,5 +62,17 @@ public class Book {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public void incrementLikes() {
+        this.likes++;
     }
 }

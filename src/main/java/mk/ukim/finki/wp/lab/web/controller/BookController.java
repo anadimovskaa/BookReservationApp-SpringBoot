@@ -96,4 +96,9 @@ public class BookController {
         return "redirect:/books";
     }
 
+    @PostMapping("/like/{id}")
+    public String likeBook(@PathVariable Long id) {
+        bookService.likeBook(id);
+        return "redirect:/books";
+    }
 }

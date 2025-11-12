@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface BookService {
     List<Book> listAll();
+
     List<Book> searchBooks(String text, Double rating);
 
     void delete(Long id);
@@ -15,4 +16,6 @@ public interface BookService {
     Book create(String title, String genre, Double averageRating, Long authorId);
 
     Book update(Long id,String title, String genre, Double averageRating, Long authorId);
+
+    void likeBook(Long id);
 }
